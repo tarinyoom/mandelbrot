@@ -1,23 +1,8 @@
 # Define the static library target
-add_library(scarflib STATIC)
+add_library(mandelbrot STATIC)
 
-# Add source files to the scarflib target
-target_sources(scarflib PRIVATE alternator.hpp sph.cpp sph.hpp)
+# Add source files to the mandelbrot target
+target_sources(mandelbrot PRIVATE mandelbrot.hpp mandelbrot.cpp)
 
-# Set the include directories for scarflib
-target_include_directories(scarflib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
-add_subdirectory(common)
-add_subdirectory(dispatch)
-add_subdirectory(model)
-add_subdirectory(parse)
-add_subdirectory(render)
-
-set(common_dir ${CMAKE_CURRENT_SOURCE_DIR}/common)
-
-target_link_libraries(scarflib PRIVATE
-    dispatch
-	model
-	parse
-	render
-	common)
+# Set the include directories for mandelbrot
+target_include_directories(mandelbrot PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

@@ -1,4 +1,4 @@
-$execPath = Join-Path -Path $PSScriptRoot -ChildPath "build\tools\Release\scarf.exe"
+$execPath = Join-Path -Path $PSScriptRoot -ChildPath "build\tools\Release\make_mandelbrot.exe"
 
 if (Test-Path -Path $execPath) {
     & $execPath $args

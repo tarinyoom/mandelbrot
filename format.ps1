@@ -1,7 +1,7 @@
 clang-format --version
 
 # Define the directories to search
-$directories = @("lib", "tests", "tools")
+$directories = @("lib", "tools")
 
 # Get all files with the specified extensions in the defined directories
 $files = $directories | ForEach-Object {

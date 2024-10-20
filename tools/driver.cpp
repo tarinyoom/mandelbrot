@@ -1,3 +1,3 @@
-#include "sph.hpp"
+#include "mandelbrot.hpp"
 
-auto main(int argc, char *argv[]) -> int { return scarf::run(argc, argv); }
+auto main(int argc, char *argv[]) -> int { return mandelbrot::run(argc, argv); }
