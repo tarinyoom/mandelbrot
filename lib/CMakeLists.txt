@@ -17,7 +17,7 @@ target_link_libraries(mandelbrot PRIVATE PkgConfig::FFMPEG)
 target_compile_options(mandelbrot PRIVATE ${FFMPEG_CFLAGS_OTHER})
 
 # Add source files to the mandelbrot target
-target_sources(mandelbrot PRIVATE mandelbrot.hpp mandelbrot.cpp png.hpp png.cpp)
+target_sources(mandelbrot PRIVATE mandelbrot.hpp mandelbrot.cpp png.hpp png.cpp number.hpp)
 
 # Set the include directories for mandelbrot
 target_include_directories(mandelbrot PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
