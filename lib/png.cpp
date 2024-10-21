@@ -128,4 +128,9 @@ void save_png(const uint8_t* pixels, int width, int height,
   avformat_network_deinit();
 }
 
+void save_png(const std::vector<uint8_t> pixels, int width, int height,
+              const std::string& filename) {
+  return save_png(pixels.data(), width, height, filename.data());
+}
+
 }  // namespace mandelbrot
