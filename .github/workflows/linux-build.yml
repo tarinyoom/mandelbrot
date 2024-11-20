@@ -1,0 +1,42 @@
+name: Linux Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Install dependencies
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake unzip pkg-config \
+              libx264-dev libx265-dev libvpx-dev libfdk-aac-dev
+
+      # Step 3: Install Bazelisk (to manage Bazel versions)
+      - name: Install Bazelisk
+        run: |
+          curl -LO https://github.com/bazelbuild/bazelisk/releases/download/v1.18.0/bazelisk-linux-amd64
+          chmod +x bazelisk-linux-amd64
+          sudo mv bazelisk-linux-amd64 /usr/local/bin/bazel
+
+      # Step 4: Build Bazel project (including FFmpeg via rules_foreign_cc)
+      - name: Build project with Bazel
+        run: |
+          bazel build //... --config=release
+
+      # Step 5: Run tests
+      - name: Run tests
+        run: |
+          bazel test //...
